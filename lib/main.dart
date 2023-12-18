@@ -9,6 +9,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      theme: ThemeData(
+        useMaterial3: true,
+        primaryColor: Colors.yellow,
+        primarySwatch: Colors.yellow,
+      ),
+      home: Scaffold(),
+    );
   }
 }
