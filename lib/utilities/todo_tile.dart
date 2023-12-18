@@ -5,11 +5,14 @@ class ToDoTile extends StatelessWidget {
       {super.key,
       required this.value,
       required this.onChanged,
-      required this.title});
+      required this.title,
+      required this.deleteAction,
+      });
 
   final value;
   final Function(bool?)? onChanged;
   final title;
+  final Function()? deleteAction;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,7 @@ class ToDoTile extends StatelessWidget {
         leading: Checkbox(
           value: value,
           onChanged: onChanged,
-          activeColor: Colors.green[200],
+          activeColor: Colors.deepPurple[400],
         ),
         title: Padding(
           padding: const EdgeInsets.all(25.0),
@@ -35,6 +38,8 @@ class ToDoTile extends StatelessWidget {
                     : TextDecoration.none),
           ),
         ),
+        trailing:
+            IconButton(onPressed: deleteAction, icon: const Icon(Icons.delete)),
       ),
     );
   }

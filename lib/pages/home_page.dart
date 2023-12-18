@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_flutter_project/utilities/DialogBox.dart';
 import 'package:my_flutter_project/utilities/todo_tile.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,17 +24,28 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.yellow,
         elevation: 0,
       ),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        const Dialog(
+          child: DialogBox(),
+        );
+      }),
       body: ListView.builder(
         itemCount: toDoItems.length,
         itemBuilder: (context, index) {
           return ToDoTile(
-              value: toDoItems[index][1],
-              onChanged: (context) {
-                setState(() {
-                  toDoItems[index][1] = !toDoItems[index][1];
-                });
-              },
-              title: toDoItems[index][0]);
+            value: toDoItems[index][1],
+            onChanged: (context) {
+              setState(() {
+                toDoItems[index][1] = !toDoItems[index][1];
+              });
+            },
+            title: toDoItems[index][0],
+            deleteAction: () {
+              setState(() {
+              toDoItems.removeAt(index);
+              });
+            },
+          );
         },
       ),
     );
