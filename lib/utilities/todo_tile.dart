@@ -17,7 +17,7 @@ class ToDoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(20),
+      margin: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: Colors.yellow,
         borderRadius: BorderRadius.circular(8),
@@ -29,7 +29,7 @@ class ToDoTile extends StatelessWidget {
           activeColor: Colors.deepPurple[400],
         ),
         title: Padding(
-          padding: const EdgeInsets.all(25.0),
+          padding: const EdgeInsets.all(15),
           child: Text(
             title,
             style: TextStyle(

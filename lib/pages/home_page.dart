@@ -24,11 +24,14 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.yellow,
         elevation: 0,
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.yellow,
+        onPressed: () {
         const Dialog(
           child: DialogBox(),
         );
-      }),
+      },
+        child: const Icon(Icons.add)),
       body: ListView.builder(
         itemCount: toDoItems.length,
         itemBuilder: (context, index) {
