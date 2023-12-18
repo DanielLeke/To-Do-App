@@ -33,6 +33,15 @@ class _HomePageState extends State<HomePage> {
                 builder: (context) {
                   return DialogBox(
                     textcontroller: mycontroller,
+                    saveAction: () {
+                      setState(() {
+                        toDoItems.add([mycontroller.text, false]);
+                      });
+                      Navigator.of(context).pop();
+                    },
+                    cancelAction: () {
+                      Navigator.of(context).pop();
+                    },
                   );
                 });
           },
