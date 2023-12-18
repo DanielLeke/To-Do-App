@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_project/utilities/DialogBox.dart';
+import 'package:my_flutter_project/utilities/dialog_box.dart';
 import 'package:my_flutter_project/utilities/todo_tile.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,6 +14,7 @@ class _HomePageState extends State<HomePage> {
     ["Make a tutorial", false],
     ["Do Exercise", false],
   ];
+  final TextEditingController mycontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +26,17 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.yellow,
-        onPressed: () {
-        const Dialog(
-          child: DialogBox(),
-        );
-      },
-        child: const Icon(Icons.add)),
+          backgroundColor: Colors.yellow,
+          onPressed: () {
+            showDialog(
+                context: context,
+                builder: (context) {
+                  return DialogBox(
+                    textcontroller: mycontroller,
+                  );
+                });
+          },
+          child: const Icon(Icons.add)),
       body: ListView.builder(
         itemCount: toDoItems.length,
         itemBuilder: (context, index) {
@@ -45,7 +50,7 @@ class _HomePageState extends State<HomePage> {
             title: toDoItems[index][0],
             deleteAction: () {
               setState(() {
-              toDoItems.removeAt(index);
+                toDoItems.removeAt(index);
               });
             },
           );
