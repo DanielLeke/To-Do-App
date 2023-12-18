@@ -6,8 +6,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.yellow[200],
       appBar: AppBar(
         title: const Text("To Do"),
+        backgroundColor: Colors.yellow,
+        elevation: 0,
       ),
     );
   }
