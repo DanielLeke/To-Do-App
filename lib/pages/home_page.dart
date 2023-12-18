@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter_project/utilities/todo_tile.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePage extends StatefulWidget {
+  HomePage({super.key});
 
-  final List toDoItems = [];
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final List toDoItems = [
+    ["Make a tutorial", false],
+    ["Do Exercise", false],
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +25,16 @@ class HomePage extends StatelessWidget {
       ),
       body: ListView.builder(
         itemCount: toDoItems.length,
-        itemBuilder: ToDoTile,
+        itemBuilder: (context, index) {
+          return ToDoTile(
+              value: toDoItems[index][1],
+              onChanged: (context) {
+                setState(() {
+                  toDoItems[index][1] = !toDoItems[index][1];
+                });
+              },
+              title: toDoItems[index][0]);
+        },
       ),
     );
   }
