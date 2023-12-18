@@ -3,25 +3,23 @@ import 'package:my_flutter_project/utilities/dialog_box.dart';
 import 'package:my_flutter_project/utilities/todo_tile.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final List toDoItems = [
-    ["Make a tutorial", false],
-    ["Do Exercise", false],
-  ];
-  final TextEditingController mycontroller = TextEditingController();
+  final List toDoItems = [];
+  final _controller = TextEditingController();
+  final List<dynamic> objectBuilder = List.filled(2, "");
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.yellow[200],
       appBar: AppBar(
-        title: const Text("To Do"),
+        title: const Text("TO DO"),
         backgroundColor: Colors.yellow,
         elevation: 0,
       ),
@@ -32,10 +30,10 @@ class _HomePageState extends State<HomePage> {
                 context: context,
                 builder: (context) {
                   return DialogBox(
-                    textcontroller: mycontroller,
+                    textcontroller: _controller,
                     saveAction: () {
                       setState(() {
-                        toDoItems.add([mycontroller.text, false]);
+                        toDoItems.add([_controller.text, false]);
                       });
                       Navigator.of(context).pop();
                     },

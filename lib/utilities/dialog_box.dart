@@ -14,6 +14,7 @@ class DialogBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      shape: Border.all(),
       backgroundColor: Colors.yellow[400],
       content: Container(
         height: 120,
@@ -30,11 +31,28 @@ class DialogBox extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(onPressed: saveAction, child: const Text("Save")),
+                ElevatedButton(
+                  onPressed: saveAction,
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateColor.resolveWith(
+                        (states) => Colors.yellow),
+                    foregroundColor: MaterialStateColor.resolveWith(
+                        (states) => Colors.black),
+                  ),
+                  child: const Text("Save"),
+                ),
                 const SizedBox(
                   width: 8,
                 ),
-                ElevatedButton(onPressed: cancelAction, child: const Text("Cancel")),
+                ElevatedButton(
+                  onPressed: cancelAction,
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateColor.resolveWith(
+                          (states) => Colors.yellow),
+                      foregroundColor: MaterialStateColor.resolveWith(
+                          (states) => Colors.black)),
+                  child: const Text("Cancel"),
+                ),
               ],
             ),
           )

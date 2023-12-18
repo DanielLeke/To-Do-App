@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
 class ToDoTile extends StatelessWidget {
-  const ToDoTile(
-      {super.key,
-      required this.value,
-      required this.onChanged,
-      required this.title,
-      required this.deleteAction,
-      });
+  const ToDoTile({
+    Key? key,
+    required this.value,
+    required this.onChanged,
+    required this.title,
+    required this.deleteAction,
+  }) : super(key: key);
 
-  final value;
-  final Function(bool?)? onChanged;
-  final title;
-  final Function()? deleteAction;
+  final bool value;
+  final ValueChanged<bool?>? onChanged;
+  final String title;
+  final VoidCallback? deleteAction;
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +33,14 @@ class ToDoTile extends StatelessWidget {
           child: Text(
             title,
             style: TextStyle(
-                decoration: value == true
-                    ? TextDecoration.lineThrough
-                    : TextDecoration.none),
+              decoration: value ? TextDecoration.lineThrough : TextDecoration.none,
+            ),
           ),
         ),
-        trailing:
-            IconButton(onPressed: deleteAction, icon: const Icon(Icons.delete)),
+        trailing: IconButton(
+          onPressed: deleteAction,
+          icon: const Icon(Icons.delete),
+        ),
       ),
     );
   }
