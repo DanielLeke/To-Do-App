@@ -39,6 +39,7 @@ class _HomePageState extends State<HomePage> {
                       setState(() {
                         toDoItems.add([_controller.text, false]);
                         checkTheToDoItems();
+                        _controller.clear();
                       });
                       Navigator.of(context).pop();
                     },
