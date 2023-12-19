@@ -10,9 +10,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List toDoItems = [];
+  final List toDoItems = [
+    ["Make a tutorial", false],
+    ["Do Exercise", false],
+  ];
   final _controller = TextEditingController();
   final List<dynamic> objectBuilder = List.filled(2, "");
+  void checkTheToDoItems() => print(toDoItems);
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +38,7 @@ class _HomePageState extends State<HomePage> {
                     saveAction: () {
                       setState(() {
                         toDoItems.add([_controller.text, false]);
+                        checkTheToDoItems();
                       });
                       Navigator.of(context).pop();
                     },

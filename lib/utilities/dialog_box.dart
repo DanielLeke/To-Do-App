@@ -20,8 +20,9 @@ class DialogBox extends StatelessWidget {
         height: 120,
         child:
             Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-          const TextField(
-            decoration: InputDecoration(
+          TextField(
+            controller: textcontroller,
+            decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: "Add a new task",
             ),
